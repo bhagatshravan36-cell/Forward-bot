@@ -5,3 +5,6 @@ posted_cc.txt
 *.log
 session_backup.json
 *.session
+.DS_Store
+Thumbs.db
+*.py[cod]
