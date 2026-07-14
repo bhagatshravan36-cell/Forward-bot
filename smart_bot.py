@@ -7,7 +7,6 @@ from telethon import TelegramClient, events
 from telethon.sessions import StringSession
 from telethon.errors import FloodWaitError, RPCError
 
-# ===== CONFIGURATION (Railway Variables Se) =====
 API_ID = int(os.environ.get("API_ID", 34783446))
 API_HASH = os.environ.get("API_HASH", "c1da051b38797498a32805f762c36bd3")
 STRING_SESSION = os.environ.get("STRING_SESSION", "")
@@ -16,7 +15,6 @@ TARGET_CHANNEL = int(os.environ.get("TARGET_CHANNEL", -1003783045906))
 DELETE_DELAY = int(os.environ.get("DELETE_DELAY", 10))
 GAP_DELAY = int(os.environ.get("GAP_DELAY", 10))
 
-# ===== BLOCK BINS =====
 BLOCK_BINS = {
     "440066", "453201", "497171", "431195", "411146", "525849", "453924",
     "492913", "454638", "465865", "461785", "437401", "404924", "455600",
@@ -30,7 +28,6 @@ BLOCK_BINS = {
     "408383", "419327", "412998", "554027", "412329", "440768", "401711"
 }
 
-# ===== SETUP =====
 client = TelegramClient(StringSession(STRING_SESSION), API_ID, API_HASH)
 
 posted = set()
@@ -47,7 +44,6 @@ cc_regex = re.compile(
 msg_counter = 0
 lock = asyncio.Lock()
 
-# ===== BOT STARTED MESSAGE =====
 async def send_startup_message():
     try:
         await client.send_message(
@@ -58,7 +54,6 @@ async def send_startup_message():
     except Exception as e:
         print(f"⚠️ Could not send startup message: {e}")
 
-# ===== MESSAGE HANDLER =====
 @client.on(events.NewMessage(chats=SOURCE_CHANNEL))
 async def handler(event):
     global msg_counter
@@ -118,7 +113,6 @@ async def handler(event):
             print(f"❌ Processing error: {e}")
             continue
 
-# ===== MAIN =====
 async def main():
     print("=" * 50)
     print("🚀 BOT STARTING...")
