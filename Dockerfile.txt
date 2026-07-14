@@ -2,12 +2,9 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Python path ensure karo
-ENV PATH="/usr/local/bin:${PATH}"
-
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python3", "smart_bot.py"]
+CMD ["python", "smart_bot.py"]
